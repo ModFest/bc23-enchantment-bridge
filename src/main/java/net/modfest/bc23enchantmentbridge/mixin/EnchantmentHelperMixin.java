@@ -9,6 +9,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import net.modfest.bc23enchantmentbridge.enchantment.EnchancementLuckOfTheSeaEnchantment;
+import net.modfest.bc23enchantmentbridge.registry.ModEnchantments;
 import net.modfest.bc23enchantmentbridge.registry.ModTags;
 import net.modfest.bc23enchantmentbridge.util.EnchancementUtil;
 import org.jetbrains.annotations.Nullable;
@@ -48,6 +50,13 @@ public class EnchantmentHelperMixin {
 	@ModifyArg(method = "method_17883", at = @At(value = "INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentHelper$Consumer;accept(Lnet/minecraft/enchantment/Enchantment;I)V"), index = 1)
 	private static int bc23enchantmentbridge$returnOriginalEnchantment(int original) {
 		return bc23enchantmentbridge$enchantment.getMaxLevel();
+	}
+
+	@Inject(method = "getLure", at = @At("HEAD"), cancellable = true)
+	private static void bc23enchantmentbridge$giveEnchancementLuckOfTheSeaMaxLure(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
+		if (EnchantmentHelper.get(stack).containsKey(ModEnchantments.ENCHANCEMENT_LUCK_OF_THE_SEA)) {
+			cir.setReturnValue(Enchantments.LURE.getMaxLevel());
+		}
 	}
 
 	@Inject(method = "getLoyalty", at = @At("HEAD"), cancellable = true)

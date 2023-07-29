@@ -3,7 +3,9 @@ package net.modfest.bc23enchantmentbridge.enchantment;
 import net.minecraft.enchantment.ChannelingEnchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Util;
 
@@ -25,6 +27,12 @@ public class EnchancementChannelingEnchantment extends ChannelingEnchantment {
 		}
 
 		return this.translationKey;
+	}
+
+
+	@Override
+	public void onTargetDamaged(LivingEntity user, Entity target, int level) {
+		target.setOnFireFor(3);
 	}
 
 }
