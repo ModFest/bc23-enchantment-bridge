@@ -1,17 +1,16 @@
 package net.modfest.bc23enchantmentbridge.mixin;
 
+import net.fabricmc.fabric.api.tag.convention.v1.TagUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.TridentItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.modfest.bc23enchantmentbridge.registry.ModTags;
 import net.modfest.bc23enchantmentbridge.util.EnchancementUtil;
-import net.modfest.bc23enchantmentbridge.util.TagUtil;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -54,7 +53,7 @@ public class EnchantmentHelperMixin {
 	@Inject(method = "getLoyalty", at = @At("HEAD"), cancellable = true)
 	private static void bc23enchantmentbridge$giveEnchancementEnchantmentsMaxLoyalty(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
 		if (stack.isIn(moriyashiine.enchancement.common.init.ModTags.Items.NO_LOYALTY)) {
-			if (EnchantmentHelper.fromNbt(stack.getEnchantments()).keySet().stream().anyMatch(enchantment -> TagUtil.isInTag(Registries.ENCHANTMENT, enchantment, ModTags.ENABLES_MAX_LEVEL_LOYALTY))) {
+			if (EnchantmentHelper.fromNbt(stack.getEnchantments()).keySet().stream().anyMatch(enchantment -> TagUtil.isIn(ModTags.ENABLES_MAX_LEVEL_LOYALTY, enchantment))) {
 				cir.setReturnValue(Enchantments.LOYALTY.getMaxLevel());
 			}
 		}

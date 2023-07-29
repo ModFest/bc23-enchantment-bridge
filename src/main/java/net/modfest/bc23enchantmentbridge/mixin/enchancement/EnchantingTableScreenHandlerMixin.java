@@ -1,13 +1,13 @@
 package net.modfest.bc23enchantmentbridge.mixin.enchancement;
 
 import moriyashiine.enchancement.common.screenhandlers.EnchantingTableScreenHandler;
+import net.fabricmc.fabric.api.tag.convention.v1.TagUtil;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.modfest.bc23enchantmentbridge.registry.ModBlocks;
 import net.modfest.bc23enchantmentbridge.registry.ModTags;
-import net.modfest.bc23enchantmentbridge.util.TagUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,7 +23,7 @@ public class EnchantingTableScreenHandlerMixin {
 
 	@Inject(method = "isEnchantmentAllowed", at = @At("HEAD"), cancellable = true)
 	private static void bc23enchantmentbridge$disallowNonEnchancementEnchantments(Enchantment enchantment, ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-		if (!TagUtil.isInTag(Registries.ENCHANTMENT, enchantment, ModTags.IS_ENCHANCEMENT))
+		if (!TagUtil.isIn(ModTags.IS_ENCHANCEMENT, enchantment))
 			cir.setReturnValue(false);
 	}
 }
