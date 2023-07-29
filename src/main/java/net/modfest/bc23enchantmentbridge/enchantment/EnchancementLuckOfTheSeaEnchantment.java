@@ -24,7 +24,7 @@ public class EnchancementLuckOfTheSeaEnchantment extends LuckEnchantment {
 	@Override
 	public String getOrCreateTranslationKey() {
 		if (this.translationKey == null) {
-			this.translationKey = Util.createTranslationKey("enchantment", Registries.ENCHANTMENT.getId(Enchantments.CHANNELING));
+			this.translationKey = Util.createTranslationKey("enchantment", Registries.ENCHANTMENT.getId(Enchantments.LUCK_OF_THE_SEA));
 		}
 
 		return this.translationKey;
