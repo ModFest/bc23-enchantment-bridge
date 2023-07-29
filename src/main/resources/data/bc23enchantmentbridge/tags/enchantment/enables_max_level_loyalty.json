@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "bc23enchantmentbridge:enchancement_channeling",
-    "bc23enchantmentbridge:riptide",
+    "bc23enchantmentbridge:enchancement_riptide",
     "enchancement:leech",
     "enchancement:warp"
   ]
