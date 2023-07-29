@@ -59,7 +59,7 @@ dependencies {
 	// Better Enchantment Boosting
 	modImplementation libs.better.enchantment.boosting
 	// For mods unreleased on Modrinth, the below is necessary.
-	modImplementation fileTree(dir: 'gradle/libs', include: '*.jar')
+	modImplementation libs.enchantery
 	modImplementation libs.moonlightlib
 }
 
