@@ -19,7 +19,8 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "net.modfest.bc23enchantmentbridge.BC23EnchantmentBridge"
+			"init": "net.modfest.bc23enchantmentbridge.BC23EnchantmentBridge",
+			"client_init": "net.modfest.bc23enchantmentbridge.client.BC23EnchantmentBridgeClient"
 		},
 		"depends": [
 			{

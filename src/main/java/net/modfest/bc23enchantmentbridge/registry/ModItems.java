@@ -7,6 +7,7 @@ import net.minecraft.registry.Registry;
 import net.modfest.bc23enchantmentbridge.BC23EnchantmentBridge;
 
 public class ModItems {
+	public static final Item BETTER_ENCHANTMENT_BOOSTING_ENCHANTING_TABLE = register(new BlockItem(ModBlocks.BETTER_ENCHANTMENT_BOOSTING_ENCHANTING_TABLE, new Item.Settings()), "better_enchantment_boosting_enchanting_table");
 	public static final Item ENCHANCEMENT_ENCHANTING_TABLE = register(new BlockItem(ModBlocks.ENCHANCEMENT_ENCHANTING_TABLE, new Item.Settings()), "enchancement_enchanting_table");
 
 	public static void registerAll() { }

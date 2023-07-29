@@ -19,6 +19,7 @@ public class BlockEntityTypeBuilderMixin {
 		if (blocks.contains(Blocks.ENCHANTING_TABLE)) {
 			Set<Block> newSet = new HashSet<>(blocks);
 			newSet.add(ModBlocks.ENCHANCEMENT_ENCHANTING_TABLE);
+			newSet.add(ModBlocks.BETTER_ENCHANTMENT_BOOSTING_ENCHANTING_TABLE);
 			return Set.copyOf(newSet);
 		}
 		return blocks;
