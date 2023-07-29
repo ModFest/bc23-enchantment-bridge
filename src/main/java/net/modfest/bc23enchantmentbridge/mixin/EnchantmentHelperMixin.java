@@ -52,7 +52,7 @@ public class EnchantmentHelperMixin {
 
 	@Inject(method = "getLoyalty", at = @At("HEAD"), cancellable = true)
 	private static void bc23enchantmentbridge$giveEnchancementEnchantmentsMaxLoyalty(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
-		if (stack.isIn(moriyashiine.enchancement.common.init.ModTags.Items.NO_LOYALTY)) {
+		if (!stack.isIn(moriyashiine.enchancement.common.init.ModTags.Items.NO_LOYALTY)) {
 			if (EnchantmentHelper.fromNbt(stack.getEnchantments()).keySet().stream().anyMatch(enchantment -> TagUtil.isIn(ModTags.ENABLES_MAX_LEVEL_LOYALTY, enchantment))) {
 				cir.setReturnValue(Enchantments.LOYALTY.getMaxLevel());
 			}
