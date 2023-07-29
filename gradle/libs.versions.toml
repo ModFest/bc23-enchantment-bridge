@@ -2,9 +2,20 @@
 # The latest versions are available at https://lambdaurora.dev/tools/import_quilt.html
 minecraft = "1.20.1"
 quilt_mappings = "1.20.1+build.1"
-quilt_loader = "0.19.1"
+quilt_loader = "0.19.2"
 
-quilted_fabric_api = "7.0.3+0.83.1-1.20.1"
+quilted_fabric_api = "7.0.6+0.85.0-1.20.1"
+
+mixinextras = "0.2.0-beta.9"
+
+enchancement = "1.20-3"
+cardinal_components_api = "5.2.1"
+midnightlib = "1.4.1-fabric"
+step_height_entity_attribute = "25dabcdad7"
+tooltipfix = "1.1.1-1.20"
+better_enchantment_boosting = "1.3.1"
+
+moonlightlib = "1.20-2.5.11"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
@@ -14,9 +25,24 @@ quilt_loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt_loade
 quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "quilted_fabric_api" }
 quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
 
+mixinextras = { module = "com.github.llamalad7.mixinextras:mixinextras-fabric", version.ref = "mixinextras" }
+
+enchancement = { module = "maven.modrinth:enchancement", version.ref = "enchancement" }
+cardinal_components_api_base = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-base", version.ref = "cardinal_components_api" }
+cardinal_components_api_entity = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-entity", version.ref = "cardinal_components_api" }
+cardinal_components_api_world = { module = "dev.onyxstudios.cardinal-components-api:cardinal-components-world", version.ref = "cardinal_components_api" }
+step_height_entity_attribute = { module = "com.github.emilyploszaj:step-height-entity-attribute", version.ref = "step_height_entity_attribute" }
+midnightlib = { module = "maven.modrinth:midnightlib", version.ref = "midnightlib" }
+tooltipfix = { module = "maven.modrinth:tooltipfix", version.ref = "tooltipfix" }
+
+better_enchantment_boosting = { module = "maven.modrinth:better-enchantment-boosting", version.ref = "better_enchantment_boosting" }
+
+moonlightlib = { module = "maven.modrinth:moonlight", version.ref = "moonlightlib" }
+
 # If you have multiple similar dependencies, you can declare a dependency bundle and reference it on the build script with "libs.bundles.example".
 [bundles]
-quilted_fabric_api = ["quilted_fabric_api", "quilted_fabric_api_deprecated"]
+quilted_fabric_api = [ "quilted_fabric_api", "quilted_fabric_api_deprecated" ]
+cardinal_components_api = [ "cardinal_components_api_base", "cardinal_components_api_entity", "cardinal_components_api_world" ]
 
 [plugins]
 quilt_loom = { id = "org.quiltmc.loom", version = "1.2.+" }

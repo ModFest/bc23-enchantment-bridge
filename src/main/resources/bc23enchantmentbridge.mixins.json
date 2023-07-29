@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.modfest.bc23enchantmentbridge.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BlockEntityTypeBuilderMixin",
+    "enchancement.EnchantingTableScreenHandlerMixin",
+    "EnchantmentHelperMixin",
+    "EnchantmentMixin",
+    "ItemStackMixin",
+    "TridentEntityMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

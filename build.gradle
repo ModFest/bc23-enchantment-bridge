@@ -8,11 +8,22 @@ version = "$project.version+${libs.versions.minecraft.get()}"
 group = project.maven_group
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+	}
+	maven { url = "https://jitpack.io" }
+	flatDir {
+		dirs 'gradle/libs'
+	}
+	maven {
+		name = 'Ladysnake Mods'
+		url = 'https://maven.ladysnake.org/releases'
+	}
+}
+
+loom {
+	accessWidenerPath = file("src/main/resources/bc23enchantmentbridge.accesswidener")
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -33,6 +44,23 @@ dependencies {
 	// Quilted Fabric API will automatically pull in the correct QSL version.
 	modImplementation libs.quilted.fabric.api
 	// modImplementation libs.bundles.quilted.fabric.api // If you wish to use Fabric API's deprecated modules, you can replace the above line with this one
+
+	// Mixin Extras
+	annotationProcessor libs.mixinextras
+	implementation libs.mixinextras
+	include libs.mixinextras
+
+	// Enchancement
+	modImplementation libs.enchancement
+	modImplementation libs.bundles.cardinal.components.api
+	modImplementation libs.step.height.entity.attribute
+	modImplementation libs.midnightlib
+	modRuntimeOnly libs.tooltipfix
+	// Better Enchantment Boosting
+	modImplementation libs.better.enchantment.boosting
+	// For mods unreleased on Modrinth, the below is necessary.
+	modImplementation fileTree(dir: 'gradle/libs', include: '*.jar')
+	modImplementation libs.moonlightlib
 }
 
 processResources {
