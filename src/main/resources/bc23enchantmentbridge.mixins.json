@@ -13,11 +13,8 @@
     "ItemStackMixin",
     "ScreenHandlerAccessor",
     "TridentEntityMixin",
-    "client.EnchantmentScreenMixin",
-    "enchancement.EnchantingTableScreenHandlerMixin",
-    "enchantery.EnchanteryLogicMixin"
-  ],
-  "client": [
+    "betterenchantmentboosting.EnchantingUtilMixin",
+    "enchancement.EnchantingTableScreenHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

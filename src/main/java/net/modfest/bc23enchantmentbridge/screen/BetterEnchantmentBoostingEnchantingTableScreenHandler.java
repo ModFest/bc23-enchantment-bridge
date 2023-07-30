@@ -39,6 +39,7 @@ import net.modfest.bc23enchantmentbridge.mixin.EnchantmentScreenHandlerAccessor;
 import net.modfest.bc23enchantmentbridge.mixin.ScreenHandlerAccessor;
 import net.modfest.bc23enchantmentbridge.registry.ModBlocks;
 import net.modfest.bc23enchantmentbridge.registry.ModScreenHandlers;
+import net.modfest.bc23enchantmentbridge.util.BetterEnchantmentBoostingUtil;
 
 import java.util.List;
 
@@ -58,7 +59,9 @@ public class BetterEnchantmentBoostingEnchantingTableScreenHandler extends Encha
 		if (inventory == ((EnchantmentScreenHandlerAccessor)this).bc23enchantmentbridge$getInventory()) {
 			ItemStack itemStack = inventory.getStack(0);
 			if (!itemStack.isEmpty() && itemStack.isEnchantable()) {
-				((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getContext().run((world, pos) -> {List<BlockPos> boosterPositions = EnchantingUtil.search(world, pos);
+				((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getContext().run((world, pos) -> {
+					BetterEnchantmentBoostingUtil.bc23enchantmentbridge$storedEnchantingTableBlockPos = pos;
+					List<BlockPos> boosterPositions = EnchantingUtil.search(world, pos);
 					double power = EnchantingUtil.getPower(world, boosterPositions);
 
 					((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getRandom().setSeed(((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getSeed().get());

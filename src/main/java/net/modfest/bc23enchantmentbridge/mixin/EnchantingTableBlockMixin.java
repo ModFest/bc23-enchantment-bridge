@@ -5,17 +5,15 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.EnchantingTableBlock;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.World;
 import net.modfest.bc23enchantmentbridge.block.EnchancementEnchantingTableBlock;
-import net.modfest.bc23enchantmentbridge.registry.ModBlocks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EnchantingTableBlock.class)
@@ -42,7 +40,7 @@ public abstract class EnchantingTableBlockMixin extends BlockWithEntity {
 								(double)pos.getY() + 2.0,
 								(double)pos.getZ() + 0.5,
 								(double)((float)blockPos.getX() + random.nextFloat()) - 0.5,
-								(double)((float)blockPos.getY() - random.nextFloat() - 1.0F),
+								(float)blockPos.getY() - random.nextFloat() - 1.0F,
 								(double)((float)blockPos.getZ() + random.nextFloat()) - 0.5
 						);
 					}
