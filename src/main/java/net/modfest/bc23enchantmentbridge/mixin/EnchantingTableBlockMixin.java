@@ -31,19 +31,21 @@ public abstract class EnchantingTableBlockMixin extends BlockWithEntity {
 			super.randomDisplayTick(state, world, pos, random);
 
 			for(BlockPos blockPos : EnchantingTableBlock.POSSIBLE_BOOKSHELF_LOCATIONS) {
-				if (this == Blocks.ENCHANTING_TABLE) {
-					EnchanteryClient.addEnchantParticles(world, pos, blockPos);
-				}
-				if (random.nextInt(16) == 0 && EnchantingTableBlock.isValidForBookshelf(world, pos, blockPos)) {
-					world.addParticle(
-							ParticleTypes.ENCHANT,
-							(double)pos.getX() + 0.5,
-							(double)pos.getY() + 2.0,
-							(double)pos.getZ() + 0.5,
-							(double)((float)blockPos.getX() + random.nextFloat()) - 0.5,
-							(double)((float)blockPos.getY() - random.nextFloat() - 1.0F),
-							(double)((float)blockPos.getZ() + random.nextFloat()) - 0.5
-					);
+				if (random.nextInt(16) == 0) {
+					if (this == Blocks.ENCHANTING_TABLE) {
+						EnchanteryClient.addEnchantParticles(world, pos, blockPos);
+					}
+					if (EnchantingTableBlock.isValidForBookshelf(world, pos, blockPos)) {
+						world.addParticle(
+								ParticleTypes.ENCHANT,
+								(double)pos.getX() + 0.5,
+								(double)pos.getY() + 2.0,
+								(double)pos.getZ() + 0.5,
+								(double)((float)blockPos.getX() + random.nextFloat()) - 0.5,
+								(double)((float)blockPos.getY() - random.nextFloat() - 1.0F),
+								(double)((float)blockPos.getZ() + random.nextFloat()) - 0.5
+						);
+					}
 				}
 			}
 			ci.cancel();
