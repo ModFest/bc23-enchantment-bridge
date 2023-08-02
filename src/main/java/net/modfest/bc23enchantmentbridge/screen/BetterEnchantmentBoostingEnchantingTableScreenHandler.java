@@ -25,6 +25,7 @@
 package net.modfest.bc23enchantmentbridge.screen;
 
 import io.github.redstoneparadox.betterenchantmentboosting.util.EnchantingUtil;
+import net.fabricmc.fabric.api.tag.convention.v1.TagUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.entity.player.PlayerEntity;
@@ -39,6 +40,7 @@ import net.modfest.bc23enchantmentbridge.mixin.EnchantmentScreenHandlerAccessor;
 import net.modfest.bc23enchantmentbridge.mixin.ScreenHandlerAccessor;
 import net.modfest.bc23enchantmentbridge.registry.ModBlocks;
 import net.modfest.bc23enchantmentbridge.registry.ModScreenHandlers;
+import net.modfest.bc23enchantmentbridge.registry.ModTags;
 import net.modfest.bc23enchantmentbridge.util.BetterEnchantmentBoostingUtil;
 
 import java.util.List;
@@ -82,6 +84,7 @@ public class BetterEnchantmentBoostingEnchantingTableScreenHandler extends Encha
 								world,
 								boosterPositions
 						);
+						list.removeIf(entry -> TagUtil.isIn(ModTags.IS_ENCHANCEMENT, entry.enchantment));
 						if (enchantmentPower[slot] <= 0 || list.isEmpty()) continue;
 						EnchantmentLevelEntry enchantmentLevelEntry = list.get(((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getRandom().nextInt(list.size()));
 						enchantmentId[slot] = Registries.ENCHANTMENT.getRawId(enchantmentLevelEntry.enchantment);
