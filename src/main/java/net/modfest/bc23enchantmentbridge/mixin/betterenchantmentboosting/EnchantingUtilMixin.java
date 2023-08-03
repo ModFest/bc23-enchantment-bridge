@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-@Mixin(value = EnchantingUtil.class, remap = false)
+@Mixin(value = EnchantingUtil.class)
 public class EnchantingUtilMixin {
 	@Inject(method = "generateEnchantments(Lnet/minecraft/item/ItemStack;IILnet/minecraft/util/random/RandomGenerator;ILnet/minecraft/world/World;Ljava/util/List;)Ljava/util/List;", at = @At("HEAD"), cancellable = true)
 	private static void bc23enchantmentbridge$setReturnValueIfNotBEBTable(ItemStack stack, int slot, int power, RandomGenerator random, int seed, World world, List<BlockPos> boosterPositions, CallbackInfoReturnable<List<EnchantmentLevelEntry>> cir) {
