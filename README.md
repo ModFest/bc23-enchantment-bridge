@@ -11,10 +11,11 @@ This is exclusively meant for Blanketcon 2023 and is not meant for proper surviv
 I'm glad you asked, outside of configurations, the changes are below:
 **General**
 - Better Enchantment Boosting, Enchancement and Enchantery's enchantment table changes are all separated into their own blocks.
-**Better Enchantment Boosting**
-- 
+  - Enchantery's table is the default vanilla one, as the mod was the hardest to move away from it.
+
 **Enchancement**
 - Vanilla enchantments kept by Enchancement have had their features reverted and put into a new enchantment that acts like the old one if it were in Enchancement by default.
 - The Enchancement Enchanting Table is now unable to retrieve non Enchancement enchantments.
 - Enchancement enchantments are incompatible with all other Enchantments, even when `singleEnchantmentMode` is false.
 - Tridents only have built-in Loyalty alongside Enchancement enchantments.
+- Enchancement enchantments remove durability on the tool that they enchant.
