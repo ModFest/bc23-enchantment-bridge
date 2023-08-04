@@ -17,6 +17,10 @@
     "enchancement.EnchancementUtilMixin",
     "enchancement.EnchantingTableScreenHandlerMixin"
   ],
+  "client": [
+    "enchancement.EnchantingTableScreenMixin",
+    "enchancement.EnchantmentDescriptionEventMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

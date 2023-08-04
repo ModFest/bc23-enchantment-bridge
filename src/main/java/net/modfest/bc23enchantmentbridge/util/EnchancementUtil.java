@@ -1,10 +1,14 @@
 package net.modfest.bc23enchantmentbridge.util;
 
 import net.fabricmc.fabric.api.tag.convention.v1.TagUtil;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.FireAspectEnchantment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.modfest.bc23enchantmentbridge.BC23EnchantmentBridge;
+import net.modfest.bc23enchantmentbridge.enchantment.EnchancementChannelingEnchantment;
+import net.modfest.bc23enchantmentbridge.enchantment.EnchancementLuckOfTheSeaEnchantment;
 import net.modfest.bc23enchantmentbridge.registry.ModTags;
 
 import java.util.Objects;
@@ -24,6 +28,17 @@ public class EnchancementUtil {
 			return new Identifier(enchantmentId.getPath().replaceFirst("enchancement_", ""));
 		}
 		return enchantmentId;
+	}
+
+	public static String getDescKeyFromEnchantment(Enchantment enchantment, String original) {
+		if (enchantment instanceof EnchancementChannelingEnchantment)
+			return "enchantment.minecraft.channeling.desc.redirect_melee_thunderless";
+		if (enchantment instanceof FireAspectEnchantment)
+			return "enchantment.minecraft.fire_aspect.desc.redirect";
+		if (enchantment instanceof EnchancementLuckOfTheSeaEnchantment)
+			return "enchantment.minecraft.luck_of_the_sea.desc.redirect";
+
+		return original;
 	}
 
 }
