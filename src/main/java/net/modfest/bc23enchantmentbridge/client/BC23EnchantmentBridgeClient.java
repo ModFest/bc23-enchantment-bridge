@@ -4,8 +4,10 @@ import net.minecraft.client.gui.screen.ingame.EnchantmentScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.modfest.bc23enchantmentbridge.registry.ModScreenHandlers;
 import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.loader.api.minecraft.ClientOnly;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 
+@ClientOnly
 public class BC23EnchantmentBridgeClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient(ModContainer mod) {
