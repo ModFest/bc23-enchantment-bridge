@@ -8,14 +8,14 @@ quilted_fabric_api = "7.0.6+0.85.0-1.20.1"
 
 mixinextras = "0.2.0-beta.9"
 
-enchancement = "1.20-3"
+enchancement = "1.20-5"
 cardinal_components_api = "5.2.1"
 midnightlib = "1.4.1-fabric"
 step_height_entity_attribute = "25dabcdad7"
 tooltipfix = "1.1.1-1.20"
 better_enchantment_boosting = "1.3.1"
 
-enchantery =  "1.20.1-0.0.5-fabric"
+enchantery =  "1.20.1-0.0.6-fabric"
 moonlightlib = "1.20-2.5.11"
 
 [libraries]
