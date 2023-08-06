@@ -68,7 +68,7 @@ public class BetterEnchantmentBoostingEnchantingTableScreenHandler extends Encha
 
 					((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getRandom().setSeed(((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getSeed().get());
 					for (int slot = 0; slot < 3; ++slot) {
-						enchantmentPower[slot] = EnchantmentHelper.calculateRequiredExperienceLevel(((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getRandom(), slot, (int) power, inventory.getStack(0));
+						enchantmentPower[slot] = EnchantmentHelper.calculateRequiredExperienceLevel(((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getRandom(), slot, (int) power, itemStack);
 						enchantmentId[slot] = -1;
 						enchantmentLevel[slot] = -1;
 						if (enchantmentPower[slot] >= slot + 1) continue;
@@ -84,7 +84,6 @@ public class BetterEnchantmentBoostingEnchantingTableScreenHandler extends Encha
 								world,
 								boosterPositions
 						);
-						list.removeIf(entry -> TagUtil.isIn(ModTags.IS_ENCHANCEMENT, entry.enchantment));
 						if (enchantmentPower[slot] <= 0 || list.isEmpty()) continue;
 						EnchantmentLevelEntry enchantmentLevelEntry = list.get(((EnchantmentScreenHandlerAccessor) this).bc23enchantmentbridge$getRandom().nextInt(list.size()));
 						enchantmentId[slot] = Registries.ENCHANTMENT.getRawId(enchantmentLevelEntry.enchantment);

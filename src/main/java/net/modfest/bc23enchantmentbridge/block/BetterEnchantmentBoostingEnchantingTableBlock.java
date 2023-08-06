@@ -24,28 +24,19 @@
 
 package net.modfest.bc23enchantmentbridge.block;
 
-import io.github.redstoneparadox.betterenchantmentboosting.util.EnchantingUtil;
-import moriyashiine.enchancement.common.screenhandlers.EnchantingTableScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.EnchantingTableBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.EnchantingTableBlockEntity;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Nameable;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.World;
 import net.modfest.bc23enchantmentbridge.screen.BetterEnchantmentBoostingEnchantingTableScreenHandler;
 import org.jetbrains.annotations.Nullable;
-import org.quiltmc.qsl.block.content.registry.api.BlockContentRegistries;
-import org.quiltmc.qsl.block.content.registry.api.enchanting.EnchantingBooster;
-
-import java.util.List;
-import java.util.Optional;
 
 public class BetterEnchantmentBoostingEnchantingTableBlock extends EnchantingTableBlock {
 	public BetterEnchantmentBoostingEnchantingTableBlock(Settings settings) {

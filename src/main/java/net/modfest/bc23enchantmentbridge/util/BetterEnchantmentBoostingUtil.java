@@ -1,6 +1,7 @@
 package net.modfest.bc23enchantmentbridge.util;
 
 import com.google.common.collect.Lists;
+import net.fabricmc.fabric.api.tag.convention.v1.TagUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -13,6 +14,7 @@ import net.minecraft.util.collection.Weighting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.random.RandomGenerator;
+import net.modfest.bc23enchantmentbridge.registry.ModTags;
 
 import java.util.List;
 
@@ -75,7 +77,7 @@ public class BetterEnchantmentBoostingUtil {
 		boolean bl = stack.isOf(Items.BOOK);
 
 		for(Enchantment enchantment : Registries.ENCHANTMENT) {
-			if ((!enchantment.isTreasure() || treasureAllowed) && enchantment.isAvailableForRandomSelection() && !enchantment.isCursed() && (enchantment.type.isAcceptableItem(item) || bl)) {
+			if (!TagUtil.isIn(ModTags.IS_ENCHANCEMENT, enchantment) && (!enchantment.isTreasure() || treasureAllowed) && enchantment.isAvailableForRandomSelection() && !enchantment.isCursed() && (enchantment.type.isAcceptableItem(item) || bl)) {
 				for(int i = enchantment.getMaxLevel(); i > enchantment.getMinLevel() - 1; --i) {
 					if (power >= enchantment.getMinPower(i) && power <= enchantment.getMaxPower(i)) {
 						list.add(new EnchantmentLevelEntry(enchantment, i));
