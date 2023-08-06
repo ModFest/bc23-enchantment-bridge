@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.random.RandomGenerator;
 import net.minecraft.world.World;
 import net.modfest.bc23enchantmentbridge.block.EnchancementEnchantingTableBlock;
+import net.modfest.bc23enchantmentbridge.util.QuiltUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -27,22 +28,20 @@ public abstract class EnchantingTableBlockMixin extends BlockWithEntity {
 		if (this == Blocks.ENCHANTING_TABLE || (EnchantingTableBlock)(Object)this instanceof EnchancementEnchantingTableBlock) {
 			super.randomDisplayTick(state, world, pos, random);
 
-			for(BlockPos blockPos : EnchantingTableBlock.POSSIBLE_BOOKSHELF_LOCATIONS) {
-				if (random.nextInt(16) == 0) {
-					if (this == Blocks.ENCHANTING_TABLE) {
-						EnchanteryClient.addEnchantParticles(world, pos, blockPos);
-					}
-					if (EnchantingTableBlock.isValidForBookshelf(world, pos, blockPos)) {
-						world.addParticle(
-								ParticleTypes.ENCHANT,
-								(double)pos.getX() + 0.5,
-								(double)pos.getY() + 2.0,
-								(double)pos.getZ() + 0.5,
-								(double)((float)blockPos.getX() + random.nextFloat()) - 0.5,
-								(float)blockPos.getY() - random.nextFloat() - 1.0F,
-								(double)((float)blockPos.getZ() + random.nextFloat()) - 0.5
-						);
-					}
+			for(BlockPos offset : EnchantingTableBlock.POSSIBLE_BOOKSHELF_LOCATIONS) {
+				if (random.nextInt(16) == 0 && this == Blocks.ENCHANTING_TABLE) {
+					EnchanteryClient.addEnchantParticles(world, pos, offset);
+				}
+				if (QuiltUtil.shouldDisplayBoosterParticles(world, pos, offset, random)) {
+					world.addParticle(
+							ParticleTypes.ENCHANT,
+							(double)pos.getX() + 0.5,
+							(double)pos.getY() + 2.0,
+							(double)pos.getZ() + 0.5,
+							(double)((float)offset.getX() + random.nextFloat()) - 0.5,
+							(double)((float)offset.getY() - random.nextFloat() - 1.0F),
+							(double)((float)offset.getZ() + random.nextFloat()) - 0.5
+					);
 				}
 			}
 			ci.cancel();
